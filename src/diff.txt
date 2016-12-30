@@ -1,0 +1,182 @@
+5,20c5,20
+< # include "../../LibraryFiles/TypeDef.h"
+< # include "../../LibraryFiles/Structures.h"
+< # include "../../LibraryFiles/normalize.h"
+< # include "../../LibraryFiles/FormFactors.h"
+< # include "../../LibraryFiles/time.h"
+< # include "../../LibraryFiles/MemoryUsage.h"
+< # include "../../LibraryFiles/AtomUtils.h"
+< # include "../../LibraryFiles/MathStructures.h"
+< # include "../../LibraryFiles/MathUtils.h"
+< # include "../../LibraryFiles/VectorManip.h"
+< # include "../../LibraryFiles/IOUtils.h"
+< # include "../../LibraryFiles/ReadPdb.h"
+< # include "../../LibraryFiles/PrintPdb.h"
+< # include "../../LibraryFiles/GetNextFrame.h"
+< # include "../../LibraryFiles/MinMax.h"
+< # include "../../LibraryFiles/error.h"
+---
+> # include "../../../LibraryFiles/TypeDef.h"
+> # include "../../../LibraryFiles/Structures.h"
+> # include "../../../LibraryFiles/normalize.h"
+> # include "../../../LibraryFiles/FormFactors.h"
+> # include "../../../LibraryFiles/time.h"
+> # include "../../../LibraryFiles/MemoryUsage.h"
+> # include "../../../LibraryFiles/AtomUtils.h"
+> # include "../../../LibraryFiles/MathStructures.h"
+> # include "../../../LibraryFiles/MathUtils.h"
+> # include "../../../LibraryFiles/VectorManip.h"
+> # include "../../../LibraryFiles/IOUtils.h"
+> # include "../../../LibraryFiles/ReadPdb.h"
+> # include "../../../LibraryFiles/PrintPdb.h"
+> # include "../../../LibraryFiles/GetNextFrame.h"
+> # include "../../../LibraryFiles/MinMax.h"
+> # include "../../../LibraryFiles/error.h"
+943a944
+> 
+1636c1637
+< 			atomID=Protein.Atoms[j].atomid;
+---
+>                         atomID=Protein.Atoms[j].atomid;
+1651d1651
+< 
+1674c1674
+< 					tempDerivative[m]+=imagDer[m]*dImagdS[k];	// dScore/dx=sigma(dScore/dF*dF/dx)
+---
+> 					tempDerivative[m]+=imagDer[m]*dImagdS[k];       // dScore/dx=sigma(dScore/dF*dF/dx)
+1681c1681
+< 			} 
+---
+> 			}
+1687a1688
+> 
+1829,1830c1830
+< 		//translateXRay(xray, Proteins[i], dx, i);
+< 		translateXRay2(xray, Proteins[i], dx, i);
+---
+> 		translateXRay(xray, Proteins[i], dx, i);
+1966,1985c1966,1981
+< 	/*
+< 	   if (params.UseVeryFastTranslation && params.NumCopies==1 && isRedundantSpaceGroup(Protein.spaceGroup))
+< 	   {
+< 	   translateXRayVeryFast(xray, Protein, dx, prot);
+< 	   if (params.RotationWeight!=0)
+< 	   {
+< 	   cout <<"Warning: Cannot use rotation score "
+< 	   <<"with VeryFastTranslation. Setting "
+< 	   <<"rotation weight to 0"<<endl;
+< 	   params.RotationWeight=0;
+< 	   }
+< 	   }
+< 	   else
+< 	   {
+< 	   translateXRay2(xray, Protein, dx, prot);
+< 	   calcTotalFormFactor(xray);
+< 	   }
+< 	 */
+< 	translateXRay2(xray, Protein, dx, prot);
+< 	calcTotalFormFactor(xray);
+---
+> 	if (params.UseVeryFastTranslation && params.NumCopies==1 && isRedundantSpaceGroup(Protein.spaceGroup))
+> 	{
+> 		translateXRayVeryFast(xray, Protein, dx, prot);
+> 		if (params.RotationWeight!=0)
+> 		{
+> 			cout <<"Warning: Cannot use rotation score "
+> 				<<"with VeryFastTranslation. Setting "
+> 				<<"rotation weight to 0"<<endl;
+> 			params.RotationWeight=0;
+> 		}
+> 	}
+> 	else
+> 	{
+> 		translateXRay2(xray, Protein, dx, prot);
+> 		calcTotalFormFactor(xray);
+> 	}
+2377a2374
+> 	cout <<"In calcScatteringConinuous"<<endl;
+2769a2767,2769
+> 	//xd=(pos[X]-x[0][0][0].Pos[X])/(x[1][0][0].Pos[X]-x[0][0][0].Pos[X]);
+> 	//yd=(pos[Y]-x[0][0][0].Pos[Y])/(x[0][1][0].Pos[Y]-x[0][0][0].Pos[Y]);
+> 	//zd=(pos[Z]-x[0][0][0].Pos[Z])/(x[0][0][1].Pos[Z]-x[0][0][0].Pos[Z]);
+2796,2857d2795
+< Real interpolate3DFast(Real xd, Real yd, Real zd, Array3D &y)
+< {
+< 	//en.wikipedia.org/wiki/Trilinear_interpolation
+< 	Real c00, c10, c01, c11;
+< 	Real c0, c1;
+< 
+< 	/*
+< 	   for (int i=0;i<2;i++)
+< 	   {
+< 	   for (int j=0;j<2;j++)
+< 	   {
+< 	   for (int k=0;k<2;k++)
+< 	   {
+< 	   cout <<"y= "<<y[i][j][k]<<endl;
+< 	   }
+< 	   }
+< 	   }
+< 	 */
+< 	c00=y[0][0][0]*(1.0-xd)+y[1][0][0]*xd;
+< 	c10=y[0][1][0]*(1.0-xd)+y[1][1][0]*xd;
+< 	c01=y[0][0][1]*(1.0-xd)+y[1][0][1]*xd;
+< 	c11=y[0][1][1]*(1.0-xd)+y[1][1][1]*xd;
+< 
+< 	c0=c00*(1.0-yd)+c10*yd;
+< 	c1=c01*(1.0-yd)+c11*yd;
+< 
+< 	return c0*(1.0-zd)+c1*zd;
+< }
+< 
+< void interpolate3DFast(Real millerX, Real millerY, Real millerZ, Array3D &real, Array3D &imag, Vector &hNew, Real invDX, Real invDY, Real invDZ, Real &realOut, Real &imagOut)
+< {
+< 	Real xd, yd, zd;
+< 	Real c00, c10, c01, c11;
+< 	Real c0, c1;
+< 
+< 	xd=(hNew[X]-millerX)*invDX;
+< 	yd=(hNew[Y]-millerY)*invDY;
+< 	zd=(hNew[Z]-millerZ)*invDZ;
+< 
+< 	//realOut=interpolate3DFast(xd, yd, zd, real);
+< 	//imagOut=interpolate3DFast(xd, yd, zd, imag);
+< 	c00=real[0][0][0]*(1.0-xd)+real[1][0][0]*xd;
+< 	c10=real[0][1][0]*(1.0-xd)+real[1][1][0]*xd;
+< 	c01=real[0][0][1]*(1.0-xd)+real[1][0][1]*xd;
+< 	c11=real[0][1][1]*(1.0-xd)+real[1][1][1]*xd;
+< 
+< 	c0=c00*(1.0-yd)+c10*yd;
+< 	c1=c01*(1.0-yd)+c11*yd;
+< 
+< 	realOut=c0*(1.0-zd)+c1*zd;
+< 
+< 	c00=imag[0][0][0]*(1.0-xd)+imag[1][0][0]*xd;
+< 	c10=imag[0][1][0]*(1.0-xd)+imag[1][1][0]*xd;
+< 	c01=imag[0][0][1]*(1.0-xd)+imag[1][0][1]*xd;
+< 	c11=imag[0][1][1]*(1.0-xd)+imag[1][1][1]*xd;
+< 
+< 	c0=c00*(1.0-yd)+c10*yd;
+< 	c1=c01*(1.0-yd)+c11*yd;
+< 
+< 	imagOut=c0*(1.0-zd)+c1*zd;
+< }  
+< 
+2935,2937c2873,2874
+< 	interpolate3DFast(millerX, millerY, millerZ, real, imag, hNew, invDX, invDY, invDZ, realOut, imagOut);
+< 	//realOut=interpolate3DFast(millerX, millerY, millerZ, real, hNew, invDX, invDY, invDZ);
+< 	//imagOut=interpolate3DFast(millerX, millerY, millerZ, imag, hNew, invDX, invDY, invDZ);
+---
+> 	realOut=interpolate3DFast(millerX, millerY, millerZ, real, hNew, invDX, invDY, invDZ);
+> 	imagOut=interpolate3DFast(millerX, millerY, millerZ, imag, hNew, invDX, invDY, invDZ);
+3380a3318
+> 	Real qMag, dwf;
+3382a3321
+> 	int npoint=xray.miller.size();
+3384,3385d3322
+< 	   int npoint=xray.miller.size();
+< 	   Real qMag, dwf;
+4805c4742
+< 	//printXRayJV("/home/jouko/project/mr/1PWA_test.txt", xray);
+---
+> 	//printXRayJV("/home/jouko/proje../../../1PWA_test.txt", xray);

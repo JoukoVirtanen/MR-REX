@@ -1,0 +1,30 @@
+Makefile:28: warning: overriding commands for target `.cpp.o'
+Makefile:20: warning: ignoring old commands for target `.cpp.o'
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/rmsd.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/rmsd.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/ReadDcd.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ReadDcd.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/MonteCarlo.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/MonteCarlo.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/ASA.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ASA.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/ReadGro.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ReadGro.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/normalize.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/normalize.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/FormFactors.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/FormFactors.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/IOUtils.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/IOUtils.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/MathUtils.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/MathUtils.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/AtomUtils.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/AtomUtils.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/time.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/time.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/printPdb.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/PrintPdb.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/readPdb.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ReadPdb.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/GetAtomType.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/GetAtomType.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/GetAtomType2.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/GetAtomType2.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/ResidueID.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ResidueID.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/AssignAtomIDs.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/AssignAtomIDs.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/Structures.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/Structures.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/ReadPsf.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/ReadPsf.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/MemoryUsage.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/MemoryUsage.o
+make: Warning: File `/home/joukov/project/LibraryFiles/error.cpp' has modification time 35 s in the future
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/error.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/error.o
+g++ -c -O5 -Wall /home/joukov/project/LibraryFiles/GetNextFrame.cpp -o /nfs/amino-home/jouko/project/LibraryFiles/GetNextFrame.o
+g++ -c -O5 -Wall /home/joukov/project/mr/src/SpaceGroup.cpp -o /nfs/amino-home/jouko/project/mr/src/SpaceGroup.o
+g++ -c -O5 -Wall /home/joukov/project/mr/src/MaximumLikelihood.cpp -o /nfs/amino-home/jouko/project/mr/src/MaximumLikelihood.o
+g++ -c -O5 -Wall /home/joukov/project/mr/src/mr.cpp -o /nfs/amino-home/jouko/project/mr/src/mr.o
+g++  /home/joukov/project/mr/src/Params.o /nfs/amino-home/jouko/project/LibraryFiles/rmsd.o /nfs/amino-home/jouko/project/mr/src/RMSD.o /nfs/amino-home/jouko/project/LibraryFiles/ReadDcd.o /nfs/amino-home/jouko/project/LibraryFiles/MonteCarlo.o /nfs/amino-home/jouko/project/LibraryFiles/ASA.o /nfs/amino-home/jouko/project/mr/src/XRay.o /nfs/amino-home/jouko/project/LibraryFiles/ReadGro.o /nfs/amino-home/jouko/project/LibraryFiles/normalize.o /nfs/amino-home/jouko/project/LibraryFiles/FormFactors.o /nfs/amino-home/jouko/project/LibraryFiles/IOUtils.o /nfs/amino-home/jouko/project/LibraryFiles/MathUtils.o /nfs/amino-home/jouko/project/LibraryFiles/AtomUtils.o /nfs/amino-home/jouko/project/mr/src/LatticeUtils.o /nfs/amino-home/jouko/project/LibraryFiles/time.o /nfs/amino-home/jouko/project/LibraryFiles/printPdb.o /nfs/amino-home/jouko/project/LibraryFiles/readPdb.o /nfs/amino-home/jouko/project/LibraryFiles/GetAtomType.o /nfs/amino-home/jouko/project/LibraryFiles/GetAtomType2.o /nfs/amino-home/jouko/project/LibraryFiles/ResidueID.o /nfs/amino-home/jouko/project/LibraryFiles/AssignAtomIDs.o /nfs/amino-home/jouko/project/mr/src/Initialize.o /nfs/amino-home/jouko/project/mr/src/ReadExperimentalDataFile.o /nfs/amino-home/jouko/project/mr/src/ReadParameters.o /nfs/amino-home/jouko/project/mr/src/molecularReplacement.o /nfs/amino-home/jouko/project/LibraryFiles/Structures.o /nfs/amino-home/jouko/project/LibraryFiles/ReadPsf.o /nfs/amino-home/jouko/project/LibraryFiles/MemoryUsage.o /nfs/amino-home/jouko/project/LibraryFiles/error.o /nfs/amino-home/jouko/project/LibraryFiles/GetNextFrame.o /nfs/amino-home/jouko/project/mr/src/SpaceGroup.o /nfs/amino-home/jouko/project/mr/src/MaximumLikelihood.o /nfs/amino-home/jouko/project/mr/src/mr.o -o mr_test
+make: warning:  Clock skew detected.  Your build may be incomplete.

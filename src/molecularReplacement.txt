@@ -1,0 +1,7 @@
+
+# include "../../LibraryFiles/TypeDef.h"
+# include "../../LibraryFiles/minimize.h"
+# include "../../LibraryFiles/MonteCarlo.h"
+# include "XRayStruct.h"
+# include "XRay.h"
+# include "LatticeStruct.h"
